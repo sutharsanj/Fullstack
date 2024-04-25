@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selling Items</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-top: 20px;
+        }
+
+        .item {
+            display: flex;
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .item img {
+            max-width: 150px;
+            max-height: 150px;
+            margin-right: 20px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .remove-button {
+            background-color: #ff3333;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .remove-button:hover {
+            background-color: #ff0000;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color:  #c55351;
+            color: white;
+            padding: 30px;
+            font-size: 25px;
+            text-align: center;
+            position: relative;
+            margin-top: 450px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Items for Sale</h1>
+
+    <!-- Item listing container -->
+    <div id="itemListing"></div>
+
+    <script>
+        // Function to load and display items from localStorage
+        function loadItems() {
+            const storedItems = JSON.parse(localStorage.getItem('items')) || [];
+
+            const itemListingContainer = document.getElementById('itemListing');
+            itemListingContainer.innerHTML = ''; // Clear existing items
+
+            storedItems.forEach((item, index) => {
+                // Create a div element for the item
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+
+                // Create an img element for the item image
+                const imgElement = document.createElement('img');
+                imgElement.src = item.image;
+                imgElement.alt = `${item.name} Image`;
+
+                // Create a div element for item details
+                const detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('item-details');
+
+                // Create an h2 element for item name
+                const itemNameElement = document.createElement('h2');
+                itemNameElement.textContent = item.name;
+
+                // Create a p element for item price
+                const itemPriceElement = document.createElement('p');
+                itemPriceElement.textContent = `Price: $${item.price}`;
+
+                // Create a button to remove the item
+                const removeButton = document.createElement('button');
+                removeButton.classList.add('remove-button');
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', () => {
+                    // Remove the item from localStorage and reload the items
+                    storedItems.splice(index, 1);
+                    localStorage.setItem('items', JSON.stringify(storedItems));
+                    loadItems();
+                });
+
+                // Append elements to the details div
+                detailsDiv.appendChild(itemNameElement);
+                detailsDiv.appendChild(itemPriceElement);
+                detailsDiv.appendChild(removeButton); // Add the remove button
+
+                // Append img and details div to the item div
+                itemDiv.appendChild(imgElement);
+                itemDiv.appendChild(detailsDiv);
+
+                // Append the item div to the item listing container
+                itemListingContainer.appendChild(itemDiv);
+            });
+        }
+
+        // Call the loadItems function to display items when the page loads
+        loadItems();
+    </script>
+    <footer>
+        <p><a href="sell.html">👈Back</a></p>
+    </footer>
+</body>
+</html>

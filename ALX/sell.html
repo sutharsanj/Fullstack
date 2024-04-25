@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALX</title>
+    <style>
+        
+        .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px; 
+      }
+      header {
+        background-color: #FFCCCB;
+        color: rgb(0, 0, 0);
+        padding: 60px;
+        text-align: center; 
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+      .navigation{
+        margin-left: auto;
+      }
+      .card {
+        width: calc(33.33% - 20px);
+        border-color: black;
+        border-style: outset;
+        border-radius: 20px;
+        font-size: 18px;
+        color: white;
+        margin-top: 8px;
+        margin-left: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .food-item {
+        text-align: center;
+        margin: 20px;
+      }
+      button {
+        padding: 12px 18px;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      h1 {
+            text-align: center;
+            color: #007bff;
+            margin-top: 20px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .item img {
+            max-width: 100%;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        button {
+            background-color: #00ffaa;
+            color: #000000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header> 
+        <div class="navigation">
+            <button onclick="window.location.href='alx.html'"style="background-color:gray;color:white;">Home</button>
+        </div>
+    </header>
+    <h1>Sell Your Items</h1>
+
+    <div class="input-container">
+        <!-- Common Item Fields -->
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" required>
+
+        <label for="itemPrice">Price ($):</label>
+        <input type="number" id="itemPrice" required>
+
+        <!-- Input for selecting an image file -->
+        <label for="itemImage">Item Image:</label>
+        <input type="file" id="itemImage" accept="image/*" required>
+
+        <button onclick="addItem()">Add Item</button>
+        <button onclick="viewSellingPage()">View Selling Page</button>
+    </div>
+
+    <!-- Item listing container -->
+    <div id="itemListing"></div>
+    <script>
+      // Function to add an item
+      function addItem() {
+          const itemName = document.getElementById('itemName').value;
+          const itemPrice = document.getElementById('itemPrice').value;
+
+          // Get the selected image file
+          const itemImageInput = document.getElementById('itemImage');
+          const itemImageFile = itemImageInput.files[0];
+
+          // Check if an image file is selected
+          let imageURL = '';
+          if (itemImageFile) {
+              imageURL = URL.createObjectURL(itemImageFile);
+          }
+
+          // Create an object to represent the item
+          const newItem = {
+              name: itemName,
+              price: itemPrice,
+              image: imageURL,
+          };
+
+          // Add the item to the list
+          addItemToList(newItem);
+
+          // Clear input fields
+          document.getElementById('itemName').value = '';
+          document.getElementById('itemPrice').value = '';
+          itemImageInput.value = ''; // Reset the file input
+      }
+
+      // Function to add the item to the list
+      function addItemToList(item) {
+          const itemDiv = document.createElement('div');
+          itemDiv.classList.add('item');
+
+          // Create an img element for the item image
+          const imgElement = document.createElement('img');
+          imgElement.src = item.image;
+          imgElement.alt = `${item.name} Image`;
+
+          // Create a div element for item details
+          const detailsDiv = document.createElement('div');
+          detailsDiv.classList.add('item-details');
+
+          // Create an h2 element for item name
+          const itemNameElement = document.createElement('h2');
+          itemNameElement.textContent = item.name;
+
+          // Create a p element for item price
+          const itemPriceElement = document.createElement('p');
+          itemPriceElement.textContent = `Price: $${item.price}`;
+
+          // Create a "Remove" button
+          const removeButton = document.createElement('button');
+          removeButton.textContent = 'Remove';
+          removeButton.addEventListener('click', () => {
+              // Remove the item from the list
+              itemDiv.remove();
+          });
+
+          // Append elements to the details div
+          detailsDiv.appendChild(itemNameElement);
+          detailsDiv.appendChild(itemPriceElement);
+          detailsDiv.appendChild(removeButton);
+
+          // Append img and details div to the item div
+          itemDiv.appendChild(imgElement);
+          itemDiv.appendChild(detailsDiv);
+
+          // Append the item div to the item listing container
+          const itemListingContainer = document.getElementById('itemListing');
+          itemListingContainer.appendChild(itemDiv);
+
+          // Save the item to localStorage (or send it to the server in a real app)
+          saveItemToLocalStorage(item);
+      }
+
+      // Function to save the item to localStorage
+      function saveItemToLocalStorage(item) {
+          const storedItems = JSON.parse(localStorage.getItem('items')) || [];
+          storedItems.push(item);
+          localStorage.setItem('items', JSON.stringify(storedItems));
+      }
+
+      // Function to view selling.html
+      function viewSellingPage() {
+          window.location.href = "selling.html";
+      }
+  </script>
+
+</body>
+</html>
