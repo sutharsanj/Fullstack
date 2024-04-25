@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juice</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #FFCCCB;
+        color: rgb(0, 0, 0);
+        padding: 30px;
+        text-align: center; 
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px; 
+      }
+
+      .navigation {
+        margin-left: auto;
+      }
+    
+      .cart {
+          display: none;
+          position: fixed;
+          top: 50px;
+          right: 50px;
+          width: 300px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+          z-index: 1000;
+        }
+
+      .cart.show-cart {
+          display: block;
+        }
+
+      .cart-emoji {
+      position: absolute;
+      top: 10px; 
+      right: 10px; 
+      font-size: 38px;
+      margin-right: 140px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+      #cart-container {
+    display: none;
+    width: 300px;
+    font-size: 14px;
+  }
+  #cart-container.hidden-cart {
+  width: 320px; 
+  font-size: 12px; 
+}
+      #cart-container.show-cart {
+    display: block;
+  }
+    #cart-items li{
+      font-size: 16px;
+    }
+    
+      .card {
+        width: calc(33.33% - 20px);
+        background-color: rgb(233, 147, 147);
+        border-radius: 20px;
+        font-size: 18px;
+        color: white;
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .food-item {
+        text-align: center;
+        margin: 20px;
+      }
+
+      .food-item img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .food-item h3,
+      .food-item p {
+        margin: 10px 0;
+      }
+
+      button {
+        padding: 12px 18px;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .header-image {
+        position: absolute;
+        top: 0px;
+        left: -10px;
+        max-width: 350px;   
+        max-height: 180px;
+        margin-left: 15px; 
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="E:\FSWD\Food\head.jpeg" alt="Header Image" class="header-image"> 
+        <h1>JUICE-ITEMS</h1>
+        <div class="cart-emoji"id="cart-icon">🛒
+            <div class="cart"id="cart-container">
+              <h1>Cart</h1>
+          <ul id="cart-items"></ul>
+          <ul id="order-list"></ul><br>
+          <p id="total-price">Total Price: $0.00</p><br>
+          <button id="place-order-button">Place Order</button>
+        </div>
+            </div>  
+        <div class="navigation">
+            <button onclick="window.location.href='web.html'">Home</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\ap.jpeg" alt=""><br>
+                <h3>Apple Juice</h3>
+                <p>Price: $70</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\pin.jpeg" alt=""><br>
+                <h3>Pineapple Juice</h3>
+                <p>Price: $60</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\org.jpeg" alt=""><br>
+                <h3>Orange Juice</h3>
+                <p>Price: $60</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\pm.jpeg" alt=""><br>
+                <h3>Pomegranate Juice</h3>
+                <p>Price: $60</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\wtr.jpeg" alt=""><br>
+                <h3>Watermelon Juice</h3>
+                <p>Price: $50</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\musk.jpeg" alt=""><br>
+                <h3>Muskmelon Juice</h3>
+                <p>Price: $70</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\stra.jpeg" alt=""><br>
+                <h3>Strawberry Juice</h3>
+                <p>Price: $50</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\bery.jpeg" alt=""><br>
+                <h3>Blueberry Juice</h3>
+                <p>Price:$70 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\rose.jpeg" alt=""><br>
+                <h3>Rose Milk</h3>
+                <p>Price:$40 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\carrot.jpeg" alt=""><br>
+                <h3>Carrot Juice</h3>
+                <p>Price:$50 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\butter.jpeg" alt=""><br>
+                <h3>Butterscotch Milkshake</h3>
+                <p>Price:$70 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\cho.jpeg" alt=""><br>
+                <h3>Chocolate Milkshake</h3>
+                <p>Price:$80 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\kitkat.jpeg" alt=""><br>
+                <h3>Kitkat Milkshake</h3>
+                <p>Price:$100 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\oreo.jpeg" alt=""><br>
+                <h3>Oreo Milkshake</h3>
+                <p>Price:$100 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="food-item">
+                <img src="E:\FSWD\Food\bro.jpeg" alt=""><br>
+                <h3>Brownie Milkshake</h3>
+                <p>Price:$120 </p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

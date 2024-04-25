@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+<style>
+
+header {
+      background-color: #FFCCCB;
+      color: rgb(0, 0, 0);
+      padding: 65px;
+      text-align: center; 
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .navigation {
+      margin-left: auto;
+    }
+    button {
+      padding: 12px 18px;
+      font-size: 12px;
+      border-radius: 10px;
+      justify-content: space-between;
+      cursor: pointer;
+      margin-left: 50%;
+    }
+    
+    .input-box {
+    max-width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1rem; 
+}
+    .input-box label{
+        width: 160px;
+        font-size: 16px;
+    }
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea {
+    width: 100%; 
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: var(--second-bg-color);
+    border-radius: .8rem;
+    margin: .7rem 0;
+}
+
+textarea {
+    width: 100%;
+}
+
+.header-image {
+      position: absolute;
+      top: 10px;
+      left: -10px;
+      max-width: 350px;   
+      max-height: 170px;
+      margin-left: 15px; 
+    }
+
+</style>
+</head>
+<body>
+    <header>
+        <img src="E:\FSWD\Food\head.jpeg" alt="Header Image" class="header-image"> 
+        <div class="navigation">
+            <button onclick="window.location.href='web.html'">Home</button>
+        </div>
+    </header>
+    <section>
+    <h2>Report</h2>
+    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+    <div class="input-box">
+        <label for="name"style="font-size: 20px;font-weight: bold;">Name:</label>
+        <input type="text" id="name" placeholder="Full Name" required>
+    </div>
+    <div class="input-box">
+        <label for="email"style="font-size: 20px;font-weight: bold;">Email:</label>
+        <input type="email" id="email" placeholder="Email Address" required>
+    </div>
+    <div class="input-box">
+        <label for="mobile"style="font-size: 20px;font-weight: bold;">Mobile:</label>
+        <input type="number" id="mobile" placeholder="Mobile Number" required>
+    </div>
+    <div class="input-box">
+        <label for="report"style="font-size: 20px;font-weight: bold;">Report:</label>
+        <textarea id="report" cols="30" rows="10" placeholder="Your Message" required></textarea>
+    </div><br>
+    <button class="button" id="send-button">Send</button>
+    </form>
+</section>
+
+<script>
+    function handleSendButtonClick(event) {
+        event.preventDefault(); 
+        alert('Report sent successfully!');
+
+         setTimeout(function () {
+            location.reload(); 
+        }, 1); 
+    }
+    
+
+    const sendButton = document.getElementById('send-button');
+    sendButton.addEventListener('click', handleSendButtonClick);
+</script>
+</body>
+</html>

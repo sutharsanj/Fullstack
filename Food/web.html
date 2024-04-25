@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #FFCCCB;
+      color: rgb(0, 0, 0);
+      padding: 30px;
+      text-align: center; 
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    .navigation {
+      margin-left: auto;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 18px;
+      font-size: 12px;
+      border-radius: 10px;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+
+    .additional-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .cart-emoji {
+      position: absolute;
+      top: 10px; 
+      right: 10px; 
+      font-size: 38px;
+      margin-right: 290px;
+      margin-top: 40px;
+      cursor: pointer;
+    }
+    .cart {
+          display: none;
+          position: fixed;
+          top: 50px;
+          right: 50px;
+          width: 300px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+          z-index: 1000;
+        }
+
+      .cart.show-cart {
+          display: block;
+        }
+
+
+    .card {
+      width: calc(33.33% - 20px);
+      background-color: rgb(233, 147, 147);
+      border-radius: 20px;
+      font-size: 18px;
+      color: white;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .food-item {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .food-item img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    footer {
+      background-color:  #c55351;
+      color: white;
+      padding: 30px;
+      font-size: 25px;
+      text-align: center;
+      position: relative;
+      margin-top: 35px;
+    }
+
+    .footer-image{
+      position: absolute;
+      top: 0px;
+      left: -12px;
+      max-width: 175px;   
+      max-height: 150px;
+      margin-left: 15px; 
+    }
+
+    .food-item h3,
+    .food-item p {
+      margin: 10px 0;
+    }
+
+    .header-image {
+      position: absolute;
+      top: 0px;
+      left: -12px;
+      max-width: 350px;   
+      max-height: 180px;
+      margin-left: 15px; 
+    }
+    
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="E:\FSWD\Food\head.jpeg" alt="Header Image" class="header-image"> 
+      <h1><i style="font-family: cursive;">MR.AJ's </i> online Food Ordering System</h1>
+      <div class="cart-emoji">🛒</div> 
+    <div class="navigation">
+      <button onclick="window.location.href='offer.html'">Offer</button>&nbsp;&nbsp;
+      <button onclick="window.location.href='contact.html'">Report</button>&nbsp;&nbsp;
+      <button onclick="window.location.href='login.html'">Logout</button>
+    </div>
+  </header>
+
+  <div class="additional-images">
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\sandwich.jpeg" alt="Sandwich"><br>
+      <button onclick="window.location.href='sandwich.html'">Sandwich</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\biriyani.jpeg" alt="Mutton Biryani"><br>
+        <button onclick="window.location.href='Biriyai.html'">Biriyani</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\pizza.jpeg" alt="Chicken Biryani"><br>
+        <button onclick="window.location.href='pizza.html'">Pizza</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\lollipop.jpeg" alt="Mutton Biryani"><br>
+        <button onclick="window.location.href='chicken.html'">Chicken items</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\grill.jpeg" alt="Mutton Biryani"><br>
+        <button onclick="window.location.href='Grill.html'">Grill</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\tea.jpeg" alt="tea"><br>
+        <button onclick="window.location.href='Tea.html'">Tea point</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\icfro.jpeg" alt=""><br>
+        <button onclick="window.location.href='Ice.html'">Ice cream</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\cf.jpeg" alt="tea"><br>
+        <button onclick="window.location.href='rice.html'">Fried Rice</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="food-item">
+        <img src="E:\FSWD\Food\jufr.jpeg" alt="tea"><br>
+        <button onclick="window.location.href='juice.html'">Juice</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <img src="E:\FSWD\Food\delivery.jpeg" alt="Footer Image" class="footer-image">
+    <p>&copy; Food Delivery</p>
+  </footer>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
